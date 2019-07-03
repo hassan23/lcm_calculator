@@ -10,7 +10,7 @@ const LCM = list => Math.max(...list);
 
 const saveLCM = async (lcm, algo, numbers) => {
   const time = Date.now();
-  const response = await axios.post("/save", {
+  const response = await axios.post("http://localhost:9000/api/save", {
     time,
     username: "hassan23" + Math.random(),
     email: "sr.hassan23@gmail.com",

@@ -25,7 +25,7 @@ export default function History() {
   const classes = useStyles();
   useEffect(() => {
     const fetchUserData = async () => {
-      const response = await axios.get("/get", {
+      const response = await axios.get("http://localhost:9000/api/get", {
         params: {
           email: "sr.hassan23@gmail.com"
         }
