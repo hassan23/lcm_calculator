@@ -25,7 +25,7 @@ export default function History() {
   const classes = useStyles();
   useEffect(() => {
     const fetchUserData = async () => {
-      const response = await axios.get("http://localhost:9000/api/get", {
+      const response = await axios.get("/get", {
         params: {
           email: "sr.hassan23@gmail.com"
         }
@@ -33,7 +33,7 @@ export default function History() {
       const data = response.data.map(v => {
         const d = new Date(0);
         d.setUTCSeconds(Math.floor(v.time / 1000));
-        v.time = d.toDateString();
+        v.timeStamp = d.toDateString();
         console.log(v.time);
         return v;
       });
@@ -63,7 +63,7 @@ export default function History() {
               <TableCell align="right">{row.lcm}</TableCell>
               <TableCell>{row.algo}</TableCell>
               <TableCell>{row.complexity}</TableCell>
-              <TableCell>{row.time}</TableCell>
+              <TableCell>{row.timeStamp}</TableCell>
             </TableRow>
           ))}
         </TableBody>
