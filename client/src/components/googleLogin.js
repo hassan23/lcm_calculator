@@ -19,7 +19,7 @@ export default ({ isLogin, setLogin }) => {
     setLogin(true);
   };
   const onFailure = error => {
-    alert(error);
+    console.log(error);
   };
   const logout = () => {
     localStorage.removeItem("username");
