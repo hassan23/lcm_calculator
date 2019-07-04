@@ -12,8 +12,8 @@ const saveLCM = async (lcm, algo, numbers) => {
   const time = Date.now();
   const response = await axios.post("/save", {
     time,
-    username: "hassan23" + Math.random(),
-    email: "sr.hassan23@gmail.com",
+    username: localStorage.getItem("username"),
+    email: localStorage.getItem("email"),
     algo: algo,
     complexity: complexity[algo],
     numbers,

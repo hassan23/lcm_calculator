@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default () => {
+export default ({ updateRefresh, refresh }) => {
   const [numbers, addNumber] = useState([]);
   const [number, updateNumber] = useState("");
   const [LCMValue, updateLCM] = useState("");
@@ -53,7 +53,10 @@ export default () => {
     updateLCM(String(resultLCM));
     addNumber([]);
     updateNumber(-Infinity);
-    if (numbers.length) saveLCM(resultLCM, algo, numbers);
+    if (numbers.length) {
+      saveLCM(resultLCM, algo, numbers);
+      updateRefresh(!refresh);
+    }
   };
   return (
     <>

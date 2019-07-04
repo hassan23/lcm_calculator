@@ -7,8 +7,7 @@ const LCMschema = new mongoose.Schema({
   },
   username: {
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   numbers: {
     type: Array,

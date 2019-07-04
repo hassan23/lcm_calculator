@@ -7,6 +7,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,17 +18,22 @@ const useStyles = makeStyles(theme => ({
   },
   table: {
     minWidth: 200
+  },
+  progress: {
+    margin: theme.spacing(2)
   }
 }));
 
-export default function History() {
+export default function History({ refresh }) {
   const [rows, updateRows] = useState([]);
+  const [isLoading, setLoading] = useState(false);
   const classes = useStyles();
   useEffect(() => {
     const fetchUserData = async () => {
+      setLoading(true);
       const response = await axios.get("/get", {
         params: {
-          email: "sr.hassan23@gmail.com"
+          email: localStorage.getItem("email")
         }
       });
       const data = response.data.map(v => {
@@ -38,11 +44,14 @@ export default function History() {
         return v;
       });
       updateRows(data);
+      setLoading(false);
     };
     fetchUserData();
-  }, []);
+  }, [refresh]);
 
-  return (
+  return isLoading ? (
+    <CircularProgress className={classes.progress} />
+  ) : (
     <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableHead>
