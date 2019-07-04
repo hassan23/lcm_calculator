@@ -20,6 +20,7 @@ exports.save = (req, res) => {
 
 exports.fetchAll = (req, res) => {
   LCM.find({ email: req.query.email })
+    .sort({ time: -1 })
     .then(response => {
       res.send(response);
     })

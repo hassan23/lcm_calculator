@@ -1,12 +1,12 @@
 import axios from "axios";
-
+import { lcm } from "mathjs";
 const complexity = {
   "Best time": "O(nlog(n))",
   "Best space": "O(n^2)",
   Optimal: "O(n)"
 };
 
-const LCM = list => Math.max(...list);
+const LCM = (list, algo) => lcm(...list);
 
 const saveLCM = async (lcm, algo, numbers) => {
   const time = Date.now();
